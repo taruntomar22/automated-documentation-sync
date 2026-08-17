@@ -32,8 +32,7 @@ jobs:
       - name: Run Documentation Validator
         run: |
           mvn -B -DskipTests=true package
-          # NOTE: the DocumentationValidator requires a runner wrapper to execute; this is a placeholder
-          echo "Documentation validation step placeholder"
+          java -cp target/classes com.capstone.validator.DocValidationRunner
 
       - name: Secret scan (gitleaks)
         uses: zricethezav/gitleaks-action@v2
@@ -45,6 +44,12 @@ jobs:
         with:
           name: test-results
           path: target/surefire-reports
+
+      - name: Upload doc validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: doc-validation-report
+          path: target/doc-validation-report.json
 
       - name: Post PR comment on failure
         if: failure()
