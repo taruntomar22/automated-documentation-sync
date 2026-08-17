@@ -1,0 +1,30 @@
+# Maven
+/target/
+
+# IntelliJ
+/.idea/
+*.iml
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+
+# IDE files
+.settings/
+
+# Build output
+bin/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# Maven wrapper
+.mvn/
