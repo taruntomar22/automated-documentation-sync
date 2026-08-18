@@ -49,14 +49,15 @@ public class DocumentationValidator {
 
         // Check required headings
         for (String heading : requiredHeadings) {
-            Pattern p = Pattern.compile("(?im)^#*\\s*" + Pattern.quote(heading) + "\\s*$", Pattern.MULTILINE);
+            Pattern p = Pattern.compile("(?im)^(#+)\\s*" + Pattern.quote(heading) + "\\s*$", Pattern.MULTILINE);
             Matcher m = p.matcher(text);
             if (!m.find()) {
                 findings.add(new Finding("missing-heading", "Required heading not found: '" + heading + "'"));
             } else {
                 // Check content under heading (until next heading of same or higher level)
+                int headingLevel = m.group(1).length();
                 int idx = m.end();
-                int nextHeading = findNextHeadingIndex(text, idx);
+                int nextHeading = findNextHeadingIndex(text, idx, headingLevel);
                 String section = text.substring(idx, nextHeading).trim();
                 if (section.isEmpty()) {
                     findings.add(new Finding("empty-section", "Heading exists but section is empty: '" + heading + "'"));
@@ -107,8 +108,8 @@ public class DocumentationValidator {
         return validateMarkdownString(content);
     }
 
-    private int findNextHeadingIndex(String text, int start) {
-        Pattern p = Pattern.compile("(?m)^#{1,6}\\s+.*$");
+    private int findNextHeadingIndex(String text, int start, int maxLevel) {
+        Pattern p = Pattern.compile("(?m)^(#{1," + maxLevel + "})\\s+.*$");
         Matcher m = p.matcher(text);
         if (m.find(start)) {
             return m.start();
