@@ -36,6 +36,8 @@ jobs:
 
       - name: Secret scan (gitleaks)
         uses: zricethezav/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: --redact
 
