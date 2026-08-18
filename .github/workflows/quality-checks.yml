@@ -1,0 +1,60 @@
+name: Quality Checks
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build
+        run: mvn -B -DskipTests=true clean package
+
+      - name: Run Unit & Integration Tests
+        run: mvn -B test
+
+      - name: Run Documentation Validator
+        run: |
+          mvn -B -DskipTests=true package
+          java -cp target/classes com.capstone.validator.DocValidationRunner
+
+      - name: Secret scan (gitleaks)
+        uses: zricethezav/gitleaks-action@v2
+        with:
+          args: --redact
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: target/surefire-reports
+
+      - name: Upload doc validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: doc-validation-report
+          path: target/doc-validation-report.json
+
+      - name: Post PR comment on failure
+        if: failure()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            :x: Quality checks failed. See uploaded artifacts and logs.
+            Run-id: ${{ github.run_id }}
