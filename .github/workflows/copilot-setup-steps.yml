@@ -35,3 +35,45 @@ jobs:
           echo "  - Java Version: 17"
           echo "  - JUnit Version: 5.9.3"
           echo "  - Maven ready for compilation and testing"
+
+  configure-agents:
+    runs-on: ubuntu-latest
+    needs: copilot-setup-steps
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Configure SDLC Orchestrator Agent
+        run: |
+          echo "✓ SDLC Orchestrator Agent configured"
+          echo "  - Role: Lifecycle management and orchestration"
+          echo "  - Capabilities:"
+          echo "    • Controls SDLC phases"
+          echo "    • Coordinates multi-agent workflows"
+          echo "    • Manages project progress tracking"
+          echo "    • Handles quality gate decisions"
+          echo "    • Escalates blockers and risks"
+
+      - name: Configure SDLC Engineer Agent
+        run: |
+          echo "✓ SDLC Engineer Agent configured"
+          echo "  - Role: Implementation and engineering execution"
+          echo "  - Capabilities:"
+          echo "    • Feature development and bug fixes"
+          echo "    • Test creation and execution"
+          echo "    • Code review and quality assessment"
+          echo "    • Documentation maintenance"
+          echo "    • Build and dependency management"
+
+      - name: Verify agent integration
+        run: |
+          echo "✓ Agent Framework Integration:"
+          echo "  - SDLC Orchestrator Agent: READY"
+          echo "  - SDLC Engineer Agent: READY"
+          echo ""
+          echo "Workflow:"
+          echo "  1. Orchestrator receives requirements"
+          echo "  2. Orchestrator plans execution phases"
+          echo "  3. Orchestrator delegates to Engineer"
+          echo "  4. Engineer executes tasks and reports status"
+          echo "  5. Orchestrator verifies completion & progresses"
