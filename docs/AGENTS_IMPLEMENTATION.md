@@ -86,8 +86,8 @@ Both agents verify:
 ## Configuration Files
 
 ### Agent Specifications
-- **SDLC_ORCHESTRATOR_AGENT.md**: Complete role, capabilities, and responsibilities definition
-- **SDLC_ENGINEER_AGENT.md**: Engineering execution specifications and task workflow
+- **sdlc-orchestrator.agent.md**: Complete role, capabilities, and responsibilities definition
+- **sdlc-engineer.agent.md**: Engineering execution specifications and task workflow
 - **README.md**: Architecture overview and integration guidelines
 
 ### Workflow Integration
@@ -164,8 +164,8 @@ Both agents verify:
 ## Implementation Completed
 
 ### Files Created
-1. `.github/agents/SDLC_ORCHESTRATOR_AGENT.md` (1,720 bytes)
-2. `.github/agents/SDLC_ENGINEER_AGENT.md` (2,364 bytes)
+1. `.github/agents/sdlc-orchestrator.agent.md` (1,720 bytes)
+2. `.github/agents/sdlc-engineer.agent.md` (2,364 bytes)
 3. `.github/agents/README.md` (5,171 bytes)
 
 ### Files Updated
@@ -225,8 +225,8 @@ cat .github/agents/SDLC_ENGINEER_AGENT.md
 ## Support & Documentation
 
 - **Architecture Details**: See `.github/agents/README.md`
-- **Orchestrator Spec**: See `.github/agents/SDLC_ORCHESTRATOR_AGENT.md`
-- **Engineer Spec**: See `.github/agents/SDLC_ENGINEER_AGENT.md`
+- **Orchestrator Spec**: See `.github/agents/sdlc-orchestrator.agent.md`
+- **Engineer Spec**: See `.github/agents/sdlc-engineer.agent.md`
 - **Workflow Config**: See `.github/workflows/copilot-setup-steps.yml`
 
 ---

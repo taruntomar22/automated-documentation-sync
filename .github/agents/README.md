@@ -29,7 +29,7 @@ This directory contains configurations for GitHub Copilot agents that automate S
 ## Agent Descriptions
 
 ### SDLC Orchestrator Agent
-**File**: `SDLC_ORCHESTRATOR_AGENT.md`
+**File**: `sdlc-orchestrator.agent.md`
 
 Controls the overall project lifecycle and orchestrates collaboration between agents. Makes strategic decisions about project progression based on quality metrics and completion criteria.
 
@@ -42,7 +42,7 @@ Controls the overall project lifecycle and orchestrates collaboration between ag
 - Escalate blockers and risks
 
 ### SDLC Engineer Agent
-**File**: `SDLC_ENGINEER_AGENT.md`
+**File**: `sdlc-engineer.agent.md`
 
 Executes engineering tasks assigned by the Orchestrator. Implements features, writes tests, performs code reviews, and maintains documentation.
 
@@ -96,8 +96,8 @@ Both agents must satisfy these criteria:
 
 ## Configuration Files
 
-- `.github/agents/SDLC_ORCHESTRATOR_AGENT.md` - Orchestrator agent specification
-- `.github/agents/SDLC_ENGINEER_AGENT.md` - Engineer agent specification
+- `.github/agents/sdlc-orchestrator.agent.md` - Orchestrator agent specification
+- `.github/agents/sdlc-engineer.agent.md` - Engineer agent specification
 - `.github/workflows/copilot-setup-steps.yml` - Agent initialization workflow
 - `.github/workflows/quality-checks.yml` - Quality assurance workflow
 
